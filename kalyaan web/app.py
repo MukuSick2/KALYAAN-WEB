@@ -25,7 +25,7 @@ mysql = MySQL(app)
 
 
 #HOME--PAGE
-@app.route("/pbl3 home")
+@app.route("/home")
 def home():
     return render_template("pbl3 homepage.html")
 
@@ -38,7 +38,7 @@ def add():
 #SIGN--UP--OR--REGISTER
 
 
-@app.route("/pbl3 signup")
+@app.route("/signup")
 def signup():
     return render_template("pbl3 signup.html")
 
@@ -74,11 +74,11 @@ def register():
         
  #LOGIN--PAGE
     
-@app.route("/pbl3 signin")
+@app.route("/signin")
 def signin():
     return render_template("pbl3 login.html")
         
-@app.route('/pbl3 login',methods =['GET', 'POST'])
+@app.route('/login',methods =['GET', 'POST'])
 def login():
     global userid
     msg = ''
@@ -98,7 +98,7 @@ def login():
             userid=  account[0]
             session['username'] = account[1]
            
-            return redirect('/pbl3 home')
+            return redirect('/home')
         else:
             msg = 'Incorrect username / password !'
     return render_template('pbl3 login.html', msg = msg)
@@ -116,7 +116,7 @@ def login():
 
 @app.route("/add")
 def adding():
-    return render_template('add.html')
+    return render_template('pbl3 add.html')
 
 
 @app.route('/addexpense',methods=['GET', 'POST'])
@@ -148,7 +148,7 @@ def display():
     expense = cursor.fetchall()
   
        
-    return render_template('display.html' ,expense = expense)
+    return render_template('pbl3 display.html' ,expense = expense)
                           
 
 
@@ -173,7 +173,7 @@ def edit(id):
     row = cursor.fetchall()
    
     print(row[0])
-    return render_template('edit.html', expenses = row[0])
+    return render_template('pbl3 edit.html', expenses = row[0])
 
 
 
@@ -279,7 +279,7 @@ def today():
 
 
      
-      return render_template("today.html", texpense = texpense, expense = expense,  total = total ,
+      return render_template("pbl3 today.html", texpense = texpense, expense = expense,  total = total ,
                            t_food = t_food,t_entertainment =  t_entertainment,
                            t_business = t_business,  t_rent =  t_rent, 
                            t_EMI =  t_EMI,  t_other =  t_other )
@@ -335,7 +335,7 @@ def month():
 
 
      
-      return render_template("today.html", texpense = texpense, expense = expense,  total = total ,
+      return render_template("pbl3 today.html", texpense = texpense, expense = expense,  total = total ,
                            t_food = t_food,t_entertainment =  t_entertainment,
                            t_business = t_business,  t_rent =  t_rent, 
                            t_EMI =  t_EMI,  t_other =  t_other )
@@ -390,7 +390,7 @@ def year():
 
 
      
-      return render_template("today.html", texpense = texpense, expense = expense,  total = total ,
+      return render_template("pbl3 today.html", texpense = texpense, expense = expense,  total = total ,
                            t_food = t_food,t_entertainment =  t_entertainment,
                            t_business = t_business,  t_rent =  t_rent, 
                            t_EMI =  t_EMI,  t_other =  t_other )
@@ -403,7 +403,7 @@ def logout():
    session.pop('loggedin', None)
    session.pop('id', None)
    session.pop('username', None)
-   return render_template('home.html')
+   return render_template('pbl3 home.html')
 
              
 
