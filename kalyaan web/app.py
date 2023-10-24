@@ -25,22 +25,22 @@ mysql = MySQL(app)
 
 
 #HOME--PAGE
-@app.route("/home")
+@app.route("/pbl3 home")
 def home():
-    return render_template("homepage.html")
+    return render_template("pbl3 homepage.html")
 
 @app.route("/")
 def add():
-    return render_template("home.html")
+    return render_template("pbl3 home.html")
 
 
 
 #SIGN--UP--OR--REGISTER
 
 
-@app.route("/signup")
+@app.route("/pbl3 signup")
 def signup():
-    return render_template("signup.html")
+    return render_template("pbl3 signup.html")
 
 
 
@@ -67,18 +67,18 @@ def register():
             cursor.execute('INSERT INTO register VALUES (NULL, % s, % s, % s)', (username, email,password))
             mysql.connection.commit()
             msg = 'You have successfully registered !'
-            return render_template('signup.html', msg = msg)
+            return render_template('pbl3 signup.html', msg = msg)
         
         
  
         
  #LOGIN--PAGE
     
-@app.route("/signin")
+@app.route("/pbl3 signin")
 def signin():
-    return render_template("login.html")
+    return render_template("pbl3 login.html")
         
-@app.route('/login',methods =['GET', 'POST'])
+@app.route('/pbl3 login',methods =['GET', 'POST'])
 def login():
     global userid
     msg = ''
@@ -98,10 +98,10 @@ def login():
             userid=  account[0]
             session['username'] = account[1]
            
-            return redirect('/home')
+            return redirect('/pbl3 home')
         else:
             msg = 'Incorrect username / password !'
-    return render_template('login.html', msg = msg)
+    return render_template('pbl3 login.html', msg = msg)
 
 
 
